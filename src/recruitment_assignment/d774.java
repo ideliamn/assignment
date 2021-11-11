@@ -13,67 +13,49 @@ import java.util.Arrays;
  */
 public class d774 {
 
-    /**
-     * @param args the command line arguments
+    /*
+        SOAL:
+        Diketahui daftar bilangan bulat positif n ≤ 20 berkelipatan 3 atau 5.
+        Jumlah daftar bilangan tersebut adalah 98.
+        Pertanyaan: berapakah jumlah dari kelipatan 17 atau 71 di bawah 100000
+        yg sudah di-mod dengan 51681?
      */
-    public static void main(String[] args) {
+    
+    // JAWAB:
+    
+    // VARIABEL AWAL:
+    // utk menyimpan daftar bilangan n
+    int n;
+    // utk menyimpan jumlah dari perhitungan
+    int sum = 0;
+    int sum_mod = 0;
 
-        // variabel utk menyimpan daftar bilangan n
-        int n;
-        // variabel utk menyimpan batas awal & akhir n
-        int a = 1; // batas awal
-        int b = 20; // batas akhir
-        // variabel utk menyimpan bilangan kelipatan
-        int x = 3;
-        int y = 5;
-        // variabel utk menyimpan jumlah yg diharapkan
-        int sum_check = 98;
-        // variabel utk menyimpan jumlah dari perhitungan
-        int sum = 0;
-
+    // VARIABEL INPUTAN:
+    // utk menyimpan batas akhir n
+    int b; // batas akhir
+    // utk menyimpan bilangan kelipatan
+    int x;
+    int y;
+    // utk menyimpan bilangan mod
+    int mod_check;
+    
+    public void answer(int b, int x, int y, int mod_check) {
         System.out.print("JAWAB:\nDaftar bilangan n: ");
-        for (n = a; n < b + 1; n++) {
+        for (n = 1; n < b + 1; n++) {
             if (n % x == 0 || n % y == 0) {
                 sum += n;
-                System.out.print(n + " ");
+                System.out.print(n + ", ");
             }
         }
         System.out.println("\nSum dari daftar bilangan n: " + sum);
-        System.out.print("Cek apakah nilai sum sesuai: ");
-        if (sum == sum_check) {
-            System.out.println("True");
-        } else {
-            System.out.println("False");
-        }
+        sum_mod = sum % mod_check;
+        System.out.println("Sum setelah di-mod " + mod_check + ": " + sum_mod);
+        System.out.println("\n======================================\n");
+    }
 
-        System.out.println("\n\n==========================\n\n");
-
-        // VARIABEL AWAL
-        // utk menyimpan daftar bilangan n
-        int n2;
-        // utk menyimpan jumlah dari perhitungan
-        int sum2 = 0;
-        int sum2_mod = 0;
-        
-        // VARIABEL INPUTAN
-        // utk menyimpan batas awal & akhir n
-        int a2 = 1; // batas awal
-        int b2 = 100000; // batas akhir
-        // utk menyimpan bilangan kelipatan
-        int x2 = 17;
-        int y2 = 71;
-        // utk menyimpan bilangan mod
-        int mod_check = 51681;
-
-        System.out.print("JAWAB:\nDaftar bilangan n: ");
-        for (n2 = a2; n2 < b2 + 1; n2++) {
-            if (n2 % x2 == 0 || n2 % y2 == 0) {
-                sum2 += n2;
-                System.out.print(n2 + " ");
-            }
-        }
-        System.out.println("\nSum dari daftar bilangan n: " + sum2);
-        sum2_mod = sum2 % mod_check;
-        System.out.println("Nilai sum setelah di-mod " + mod_check + ": " + sum2_mod);
+    public static void main(String[] args) {
+        d774 d = new d774();
+        d.answer(20, 3, 5, 1);
+        d.answer(100000, 17, 71, 51681);
     }
 }
