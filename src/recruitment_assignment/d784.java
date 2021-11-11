@@ -6,7 +6,6 @@
 package recruitment_assignment;
 
 import java.math.BigInteger;
-import java.text.DecimalFormat;
 
 /**
  *
@@ -14,55 +13,50 @@ import java.text.DecimalFormat;
  */
 public class d784 {
 
+    /*
+        SOAL:
+        Diketahui 2^100 = 1267650600228229401496703205376
+        Partisi 3 bilangan tersebut jika dijumlahkan (126 + 765 + ... + 537 + 6)
+        hasilnya 4417.
+        Pertanyaan: berapakah jumlah partisi 3 bilangan dari 2^1592?
+     */
+
+    //JAWAB:
+    
+    // utk menyimpan nilai hasil pangkat:
+    BigInteger num;
+    // utk menyimpan jumlah dari bilangan2 hasil partisi:
+    int sum = 0;
+    // utk menyimpan nilai hasil pangkat dlm bentuk string:
+    String to_str;
+    // utk menyimpan bilangan2 hasil partisi dlm bentuk string:
+    String[] arr_str;
+    // utk menyimpan bilangan2 hasil partisi dlm bentuk int:
+    int[] arr_num;
+
+    public void answer(int power) {
+        System.out.println("Operasi pangkat: 2^" + power);
+        num = BigInteger.valueOf(2).pow(power);
+        System.out.println("Hasil: " + num);
+        
+        to_str = num.toString();
+        arr_str = to_str.split("(?<=\\G.{3})");
+        arr_num = new int[arr_str.length];
+        
+        System.out.print("Partisi: ");
+        for (int i = 0; i < arr_str.length; i++) {
+            arr_num[i] = Integer.parseInt(arr_str[i]);
+            System.out.print(arr_num[i] + ", ");
+            sum += arr_num[i];
+        }
+        
+        System.out.println("\nHasil jumlah bilangan partisi: " + sum);
+        System.out.println("\n======================================\n");
+    }
+
     public static void main(String[] args) {
-        
-        // VARIABEL AWAL:
-        // utk menyimpan nilai hasil pangkat:
-        BigInteger num1, num2;
-        // utk menyimpan jumlah dari bilangan2 hasil partisi:
-        int sum1 = 0;
-        int sum2 = 0;
-        // utk menyimpan nilai hasil pangkat dlm bentuk string:
-        String to_str1, to_str2;
-        // utk menyimpan bilangan2 hasil partisi dlm bentuk string:
-        String[] arr_str1, arr_str2;
-        // utk menyimpan bilangan2 hasil partisi dlm bentuk int:
-        int[] arr_num1, arr_num2;
-        
-        // VARIABEL INPUTAN:
-        // utk bilangan pangkat
-        int power1 = 100;
-        int power2 = 1592;
-
-        System.out.println("Operasi pangkat: 2^"+power1);
-        num1 = BigInteger.valueOf(2).pow(power1);
-        System.out.println("Hasil: "+num1);
-        to_str1 = num1.toString();
-        arr_str1 = to_str1.split("(?<=\\G.{3})");
-        arr_num1 = new int[arr_str1.length];
-        System.out.print("Partisi: ");
-        for (int i = 0; i < arr_str1.length; i++) {
-            arr_num1[i] = Integer.parseInt(arr_str1[i]);
-            System.out.print(arr_num1[i] + ", ");
-            sum1 += arr_num1[i];
-        }
-        System.out.println("\nHasil jumlah bilangan partisi: " + sum1);
-        
-        System.out.println("\n\n============ anjeeengggg =============\n");
-
-        System.out.println("Operasi pangkat: 2^"+power2);
-        num2 = BigInteger.valueOf(2).pow(power2);
-        System.out.println("Hasil: "+num2);
-        to_str2 = num2.toString();
-        arr_str2 = to_str2.split("(?<=\\G.{3})");
-        arr_num2 = new int[arr_str2.length];
-        System.out.print("Partisi: ");
-        for (int i = 0; i < arr_str2.length; i++) {
-            arr_num2[i] = Integer.parseInt(arr_str2[i]);
-            System.out.print(arr_num2[i] + ", ");
-            sum2 += arr_num2[i];
-        }
-        System.out.println("\nHasil jumlah bilangan partisi: " + sum2);
-
+        d784 d = new d784();
+        d.answer(100);
+        d.answer(1592);
     }
 }
